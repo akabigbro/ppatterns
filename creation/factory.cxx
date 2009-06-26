@@ -1,23 +1,21 @@
 #include "factory.h"
 
-Factory * Factory::instance(new Factory());
-
 Factory::Factory(void)
 {
 }
 
 Factory::~Factory(void)
 {
-    delete instance;
+    creators.clear();
 }
 
 Product * Factory::newProduct(int productType)
 {
     Product * product = NULL;
 
-    if (instance->creators.find(productType) != instance->creators.end())
+    if (creators.find(productType) != creators.end())
     {
-        product = instance->creators[productType]->newInstance();
+        product = creators[productType]->newInstance();
     }
 
     return product;
@@ -25,16 +23,16 @@ Product * Factory::newProduct(int productType)
 
 void Factory::addCreator(Creator * creator)
 {
-    instance->creators[creator->getProductType()] = creator;
+    creators[creator->getProductType()] = creator;
 }
 
 void Factory::remCreator(Creator * creator)
 {
-    std::map<int, Creator *>::iterator iter = instance->creators.find(creator->getProductType());
+    std::map<int, Creator *>::iterator iter = creators.find(creator->getProductType());
 
-    if (iter != instance->creators.end())
+    if (iter != creators.end())
     {
-        instance->creators.erase(iter);
+        creators.erase(iter);
     }
 }
 
