@@ -1,5 +1,10 @@
 #include "observable.h"
 
+Observable::Observable(int state)
+    : Stateful(state)
+{
+}
+
 void Observable::addObserver(Observer * observer)
 {
     observers.push_back(observer);
