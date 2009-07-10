@@ -11,9 +11,11 @@ class Observable : public Stateful
         std::vector<Observer *> observers;
     public:
         Observable(int state);
+        ~Observable(void);
 
         void addObserver(Observer * observer);
         void remObserver(Observer * observer);
+
         void Notify(void);
 };
 
