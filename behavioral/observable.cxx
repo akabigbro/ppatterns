@@ -5,6 +5,11 @@ Observable::Observable(int state)
 {
 }
 
+Observable::~Observable(void)
+{
+    observers.clear();
+}
+
 void Observable::addObserver(Observer * observer)
 {
     observers.push_back(observer);
