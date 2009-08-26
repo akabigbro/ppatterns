@@ -1,5 +1,15 @@
 #include "observable.h"
 
+Observable::Observable(int state)
+    : Stateful(state)
+{
+}
+
+Observable::~Observable(void)
+{
+    observers.clear();
+}
+
 void Observable::addObserver(Observer * observer)
 {
     observers.push_back(observer);
