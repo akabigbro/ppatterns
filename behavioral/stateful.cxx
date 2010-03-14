@@ -1,10 +1,5 @@
 #include "stateful.h"
 
-void Stateful::setState(int state)
-{
-    this->state = state;
-}
-
 Stateful::Stateful(int state)
     : state(state)
 {
@@ -13,4 +8,10 @@ Stateful::Stateful(int state)
 int Stateful::getState(void)
 {
     return state;
+}
+
+void Stateful::setState(int state)
+{
+    this->state = state;
+    Notify();
 }
