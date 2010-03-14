@@ -6,11 +6,12 @@ class Stateful
     private:
         int state;
     protected:
-        void setState(int state);
+        virtual void Notify(void)=0;
     public:
         Stateful(int state);
 
         int getState(void);
+        void setState(int state);
 };
 
 #endif//STATEFUL_H
