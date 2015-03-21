@@ -1,0 +1,1 @@
+Just a small set of useful patterns based classes to make life easier.
